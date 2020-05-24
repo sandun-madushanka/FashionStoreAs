@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 13, 2020 12:51:41 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="mypojos.FashionstockHasUser" table="fashionstock_has_user" catalog="fashionstore" optimistic-lock="version">
+        <id name="fuelstockHasUserid" type="java.lang.Integer">
+            <column name="fuelstock_has_userid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="fashionstock" class="mypojos.Fashionstock" fetch="select">
+            <column name="fashionstock_idfashion" not-null="true" />
+        </many-to-one>
+        <many-to-one name="user" class="mypojos.User" fetch="select">
+            <column name="user_iduser" not-null="true" />
+        </many-to-one>
+        <property name="dateintake" type="date">
+            <column name="dateintake" length="0" />
+        </property>
+        <property name="qtyintake" type="java.lang.Double">
+            <column name="qtyintake" precision="22" scale="0" />
+        </property>
+        <property name="suprate" type="java.lang.Double">
+            <column name="suprate" precision="22" scale="0" />
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="status" />
+        </property>
+    </class>
+</hibernate-mapping>

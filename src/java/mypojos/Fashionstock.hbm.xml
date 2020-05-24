@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 13, 2020 12:51:41 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="mypojos.Fashionstock" table="fashionstock" catalog="fashionstore" optimistic-lock="version">
+        <id name="idfashion" type="java.lang.Integer">
+            <column name="idfashion" />
+            <generator class="identity" />
+        </id>
+        <property name="itemName" type="string">
+            <column name="itemName" length="45" />
+        </property>
+        <property name="unitprice" type="java.lang.Double">
+            <column name="unitprice" precision="22" scale="0" />
+        </property>
+        <property name="currentqty" type="java.lang.Double">
+            <column name="currentqty" precision="22" scale="0" />
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="status" />
+        </property>
+        <set name="fashionstockHasUsers" table="fashionstock_has_user" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="fashionstock_idfashion" not-null="true" />
+            </key>
+            <one-to-many class="mypojos.FashionstockHasUser" />
+        </set>
+        <set name="invoices" table="invoice" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="fashionstock_idfashion" not-null="true" />
+            </key>
+            <one-to-many class="mypojos.Invoice" />
+        </set>
+    </class>
+</hibernate-mapping>
